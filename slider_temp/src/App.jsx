@@ -36,7 +36,7 @@ function App() {
           return prev + 1;
         } else {
           setDataSlider([...dataSlider, ...dataSlider]);
-          return prev;
+          return prev; // count = 0
         }
       });
     }, 1000);
