@@ -1,0 +1,73 @@
+*{
+  box-sizing: border-box;  /**vry important */
+
+}
+
+.slider_container{
+width: 100%;
+background-color: black;
+color: white;
+padding: 20px 0;
+overflow: hidden;
+margin: auto;
+}
+
+.slider_container .btns_control {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+padding: 20px 50px;
+}
+
+.slider_container .btns_control button{
+
+}
+
+.slider_container .wraper{
+width: 95%;
+overflow: hidden;
+/* border:2px solid red; */
+margin: auto;
+}
+
+.slider_container .wraper .slider{
+  width: 100%;
+/* border:3px solid red; */
+padding: 10px 0;
+display: flex;
+gap: 10px;
+}
+
+
+.slider_container .wraper .slider .card {
+  flex:0 0 calc(100% / 6 - 10px);
+  border: 1px solid white;
+  display: flex;
+  gap: 10px;
+  flex-direction: column;
+/* justify-content: center; */
+align-items: center;
+background-color: blueviolet;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.pagination span {
+  width: 10px;
+  height: 10px;
+  margin: 0 5px;
+  background-color: #ccc;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.pagination span.active {
+  background-color: #333;
+  transform: scale(1.2);
+}
