@@ -10,15 +10,16 @@ function App() {
     "_One", "_Two", "_Three", "_Four", "_Five", "_Six",
     "_Seven", "_Eight", "_Nine", "_Ten", "_Eleven", "_Twelve"
   ];
-
+  
+  const [dataSlider, setDataSlider] = useState(txt);
   const [count, setCount] = useState(0);
   const itemsPerPage = 6;
 
   const shiftNext = () => {
-    if (count < txt.length - itemsPerPage) {
+    if (count < dataSlider.length - itemsPerPage) {
       setCount(count + 1);
     } else {
-      setCount(txt.length - itemsPerPage);
+      setDataSlider([...dataSlider, ...dataSlider]);
     }
   };
 
@@ -30,10 +31,17 @@ function App() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCount((prev) => (prev < txt.length - itemsPerPage ? prev + 1 : txt.length - itemsPerPage));
-    }, 3000);
+      setCount((prev) => {
+        if (prev < dataSlider.length - itemsPerPage) {
+          return prev + 1;
+        } else {
+          setDataSlider([...dataSlider, ...dataSlider]);
+          return prev;
+        }
+      });
+    }, 1000);
     return () => clearInterval(interval);
-  }, []);
+  }, [dataSlider]);
 
   const sliderStyle = css`
     transform: translateX(calc(-${count} * (100% / ${itemsPerPage})));
@@ -48,7 +56,7 @@ function App() {
       </div>
       <div className="wraper">
         <div className="slider" css={sliderStyle}>
-          {txt.map((i, idx) => (
+          {dataSlider.map((i, idx) => (
             <div className="card" key={idx}>
               <h3>{i}</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
